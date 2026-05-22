@@ -15,7 +15,8 @@ def search(array, idxToSearch):
     return -1
 
 def loadMovie(quantity):
-
+    
+    loadMovieId()
     loadMovieName()
     
     
