@@ -15,17 +15,12 @@ def search(array, idxToSearch):
     return -1
 
 def loadMovie(quantity):
-    
-    loadMovieId()
-    loadMovieName()
-    
-    
-    
-    
-
-    
-    
-   
+    for i in range(quantity):
+        loadMovieId()
+        loadMovieName()
+        loadMovieYear()
+        loadMovieGenre()
+        movieRate()
 
 def loadMovieId():
     id = int(input("Ingresá un ID para la pelicula: "))
@@ -58,7 +53,11 @@ def loadMovieGenre():
         idx_genres.append(len(genres - 1))
 
 def movieRate():
-    movie_rate = float(input("Ingresá la puntuación: "))
+    movie_rate = float(input("Ingresá la puntuación entre 0.0 y 5.0: "))
+    while movie_rate <=0 or movie_rate >=5:
+        print("la puntuación ingresada no es valida")
+        movie_rate = float(input("Ingresá la puntuación entre 0.0 y 5.0: "))
+
     movies_rates.append(movie_rate)
 
 
@@ -78,5 +77,5 @@ def main():
         if quantityOfMoviesToLoad <= 0:
             print("No podés subir", quantityOfMoviesToLoad, "ingresá un número mayor a 0: ")
             quantityOfMoviesToLoad = int(input("¿Cuantas peliculas querés subir? "))
-        loadMovie()
+        loadMovie(quantityOfMoviesToLoad)
 main()
