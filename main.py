@@ -8,6 +8,8 @@ years = []
 genres = []
 movies_rates = []
 
+
+
 def search(array, idxToSearch):
     for i in range(len(array)):
         if array[i] == idxToSearch:
@@ -52,7 +54,7 @@ def loadMovieYear():
 def loadMovieGenre():
     movie_genre = input("Ingresá el género de la pelicula: ")
     genreExists = search(genres, movie_genre)
-
+    print(genreExists)
     if genreExists == -1:
         genres.append(movie_genre)
         idx_genres.append(len(genres - 1))
@@ -78,5 +80,5 @@ def main():
         if quantityOfMoviesToLoad <= 0:
             print("No podés subir", quantityOfMoviesToLoad, "ingresá un número mayor a 0: ")
             quantityOfMoviesToLoad = int(input("¿Cuantas peliculas querés subir? "))
-        loadMovie()
+        loadMovie(quantityOfMoviesToLoad)
 main()
