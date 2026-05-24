@@ -5,8 +5,11 @@ movies_ids = []
 idx_years = []
 idx_genres = []
 years = []
+genres_id = []
 genres = []
 movies_rates = []
+
+
 
 def search(array, idxToSearch):
     for i in range(len(array)):
@@ -18,15 +21,16 @@ def loadMovie(quantity):
     for i in range(quantity):
         loadMovieId()
         loadMovieName()
-        loadMovieYear()
+        """ loadMovieYear()
         loadMovieGenre()
-        movieRate()
+        movieRate() """
 
 def loadMovieId():
     id = int(input("Ingresá un ID para la pelicula: "))
     idExists = search(movies_ids, id)
 
     if idExists == -1:
+        print("El ID ingresado no existe.")
         movies_ids.append(id)
 
 def loadMovieName():
@@ -47,7 +51,7 @@ def loadMovieYear():
 def loadMovieGenre():
     movie_genre = input("Ingresá el género de la pelicula: ")
     genreExists = search(genres, movie_genre)
-
+    print(genreExists)
     if genreExists == -1:
         genres.append(movie_genre)
         idx_genres.append(len(genres - 1))
@@ -66,6 +70,7 @@ def main():
     print("#----------------------- MENU DE OPCIONES -----------------------#")
     print("")
     print("1. Cargar Pelicula")
+    print("2. Crear pelicula")
     print("")
 
 
