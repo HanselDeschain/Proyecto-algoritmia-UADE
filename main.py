@@ -1,119 +1,117 @@
-movies_name = ["Patrón"],
-movies_ids = [1111]
-
-idx_years = []
-years = []
-
-idx_genres = []
-genres_id = []
-genres = []
-
+movies_ids = []
+movies_names = []
+movies_genres = []
+movies_years = []
 movies_rates = []
 
 
-
-def search(array, idxToSearch):
+def search(array, value):
     for i in range(len(array)):
-        if array[i] == idxToSearch:
+        if array[i] == value:
             return i
     return -1
 
-def newMovie():
-    """
-    Función de CREACIÓN de movie_id y movie_name
-    """
 
-    ## Parte final de la creación, reservamos el espacio, por ahora en blanco, para luego reemplazar el lugar con el dato final sobre esa pelicula, manteniendo las listas paralelas alineadas
-    idx_genres.append("")
-    idx_years.append("")
-    movies_rates.append("")
-    return 
+def ask_movie_id():
+    movie_id = int(input("Ingresá el ID de la película: "))
+    while movie_id < 1000 or movie_id > 9999:
+        print("Error: el ID debe estar entre 1000 y 9999.")
+        movie_id = int(input("Ingresá el ID de la película: "))
+    return movie_id
 
-def loadMovie():
-    """
-    Función de carga de peliculas con los datos existentes
-    """
-    temp_movie_id = getMovieId()
 
-    if temp_movie_id == "":
-        return ## Retorna al menú para que cree el id y la pelicula
-    
-    movie_name = getMovieName(temp_movie_id)
+def ask_movie_name():
+    movie_name = input("Ingresá el nombre de la película: ")
+    while movie_name == "":
+        print("Error: el nombre no puede estar vacío.")
+        movie_name = input("Ingresá el nombre de la película: ")
+    return movie_name
 
-    temp_year_idx = getMovieYear()
 
-    if temp_year_idx == "":
+def ask_movie_genre():
+    movie_genre = input("Ingresá el género de la película: ")
+    while movie_genre == "":
+        print("Error: el género no puede estar vacío.")
+        movie_genre = input("Ingresá el género de la película: ")
+    return movie_genre
+
+
+def ask_movie_year():
+    movie_year = int(input("Ingresá el año de la película: "))
+    while movie_year < 1888 or movie_year > 2100:
+        print("Error: ingresá un año válido.")
+        movie_year = int(input("Ingresá el año de la película: "))
+    return movie_year
+
+
+def ask_movie_rate():
+    movie_rate = float(input("Ingresá la puntuación de la película (0 a 5): "))
+    while movie_rate < 0 or movie_rate > 5:
+        print("Error: la puntuación debe estar entre 0 y 5.")
+        movie_rate = float(input("Ingresá la puntuación de la película (0 a 5): "))
+    return movie_rate
+
+
+def create_movie():
+    movie_id = ask_movie_id()
+
+    if search(movies_ids, movie_id) != -1:
+        print("Error: ya existe una película con ese ID.")
         return
 
-    ## Si los datos no son "", se guardan los datos en las listas, si alguno devuelve ""(no existe), vuelve al menú
-    ## Id y movie_name no son necesarios, ya que ya estan guardados, vamos a guardar idx_years, idx_genres y movie_rates
-    idx_years[temp_movie_id] = temp_year_idx
+    movie_name = ask_movie_name()
 
-def getMovieId():
-    """
-    Retorna '' default si la pelicula no existe, si existe, devuelve el indice del id cargado
-    """
-    id = int(input("Ingresá un ID para la pelicula: "))
-    idExists = search(movies_ids, id)
-    resultado = ""
-    if idExists == -1:
-        print("El ID ingresado no existe. Primero crealo desde el menú")
-    else:
-        resultado = idExists
-    return resultado
+    if search(movies_names, movie_name) != -1:
+        print("Error: ya existe una película con ese nombre.")
+        return
 
-def getMovieName(movie_id):
-    """
-    Devuelve el nombre de la pelicula con el id recibido por argumento, si no existe el id, el programa falla antes
-    """
-    movieIdIndex = search(movies_ids, movie_id)
-    print("El nombre de la pelicula es:", movies_name[movieIdIndex])
+    movie_genre = ask_movie_genre()
+    movie_year = ask_movie_year()
+    movie_rate = ask_movie_rate()
 
-    return movies_name[movieIdIndex]
-
-def getMovieYear():
-     year = int(input("Ingresá el año de la pelicula: "))
-     year_idx = search(years, year)
-     resultado = ""
-
-     if year_idx == -1:
-        print("El año ingresado no existe. Primero crealo desde el menú")
-     else:
-        resultado = year_idx
-
-     return resultado
-
-def loadMovieGenre():
-    movie_genre = input("Ingresá el género de la pelicula: ")
-    genreExists = search(genres, movie_genre)
-    print(genreExists)
-    if genreExists == -1:
-        genres.append(movie_genre)
-        idx_genres.append(len(genres - 1))
-
-def movieRate():
-    movie_rate = float(input("Ingresá la puntuación entre 0.0 y 5.0: "))
-    while movie_rate <=0 or movie_rate >=5:
-        print("la puntuación ingresada no es valida")
-        movie_rate = float(input("Ingresá la puntuación entre 0.0 y 5.0: "))
-
+    movies_ids.append(movie_id)
+    movies_names.append(movie_name)
+    movies_genres.append(movie_genre)
+    movies_years.append(movie_year)
     movies_rates.append(movie_rate)
+
+    print("Película cargada correctamente.")
+
+
+def show_movies():
+    if len(movies_ids) == 0:
+        print("No hay películas cargadas.")
+        return
+
+    print("\n--- LISTADO DE PELÍCULAS ---")
+    for i in range(len(movies_ids)):
+        print("ID:", movies_ids[i])
+        print("Nombre:", movies_names[i])
+        print("Género:", movies_genres[i])
+        print("Año:", movies_years[i])
+        print("Puntuación:", movies_rates[i])
+        print("----------------------------")
 
 
 def main():
-    optionSelected = 10000
-    while optionSelected != 0:
-        print("")
-        print("#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#")
-        print("#----------------------- MENU DE OPCIONES -----------------------#")
-        print("")
-        print("1. Cargar Pelicula")
-        print("2. Crear pelicula")
-        print("0. Finalizar programa")
-        print("")
+    option = -1
 
-        optionSelected = int(input("Seleccioná una opción para continuar: "))
+    while option != 0:
+        print("\n#--------- SISTEMA DE GESTIÓN DE PELÍCULAS ---------#")
+        print("1. Cargar película")
+        print("2. Mostrar películas")
+        print("0. Salir")
 
-        if optionSelected == 1:
-            loadMovie()
+        option = int(input("Seleccioná una opción: "))
+
+        if option == 1:
+            create_movie()
+        elif option == 2:
+            show_movies()
+        elif option == 0:
+            print("Programa finalizado.")
+        else:
+            print("Opción inválida.")
+
+
 main()
