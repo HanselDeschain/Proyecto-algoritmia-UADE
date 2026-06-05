@@ -207,6 +207,7 @@ def showMovies(movies_ids, movies_name, idx_genres, idx_years, movies_rates, gen
 def showGenres(genres):
     if not len(genres):
         print("No hay generos para listar")
+        return
 
     print("Genéros totales:", len(genres))   
     for i in range(len(genres)):
@@ -215,12 +216,13 @@ def showGenres(genres):
 def showYears(years):
     if not len(years):
         print("No hay años para listar")
+        return
 
     print("Años totales cargados:", len(years)) 
     for i in range(len(years)):
         print("Año: ", years[i])
 
-def count_movies_by_genre(idx_genres, genres):
+def countMoviesByGenre(idx_genres, genres):
     if len(genres) == 0:
         print("No hay géneros cargados.")
         return
@@ -237,7 +239,23 @@ def count_movies_by_genre(idx_genres, genres):
                 counter += 1
         print(genres[i], ":", counter)
 
+def calculateAverageReview(reviews):
+    if not len(reviews):
+        print("No hay puntuaciones cargadas")
+        return
+    total = 0
+    withReview = 0
 
+    for i in range(len(reviews)):
+        if reviews[i] != NOT_FOUND:
+            total += reviews[i]
+            withReview += 1
+
+    if withReview == 0:
+        print("No hay puntuaciones cargadas")
+        return
+    
+    print("La puntuación promedio es: ", total / withReview)
 
 def main():
     movies_name = []
@@ -272,15 +290,16 @@ def main():
         print("10. Ordenar por puntuacion")
         print("")
         print("11. Mostrar cantidad de peliculas por género")
+        print("12. Mostrar promedio de puntuación")
         print("0. Finalizar programa")
         print("")
 
         optionSelected = int(input("Seleccioná una opción para continuar: "))
 
         if optionSelected == 1:
-            loadMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years)
-        elif optionSelected == 2:
             newMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates)
+        elif optionSelected == 2:
+            loadMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years)
         elif optionSelected == 3:
             showMovies(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years)
         elif optionSelected == 4:
@@ -292,7 +311,9 @@ def main():
         elif optionSelected == 7:
             showYears(years)
         elif optionSelected == 11:
-            count_movies_by_genre(idx_genres, genres)
+            countMoviesByGenre(idx_genres, genres)
+        elif optionSelected == 12:
+            calculateAverageReview(movies_rates)
         elif optionSelected == 0:
             print("Saliendo...")
         else:
