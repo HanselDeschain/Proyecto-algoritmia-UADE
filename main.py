@@ -1,5 +1,10 @@
 NOT_FOUND = -1
 
+def printError(value):
+    """Acepta un valor como argumento y lo usa para imprimir un mensaje de error genérico"""
+    print(value, "No existe, primero crealo desde el menú")
+    print("")
+
 
 def search(array, value):
     for i in range(len(array)):
@@ -7,28 +12,28 @@ def search(array, value):
             return i
     return NOT_FOUND
 
+def newMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates):
+    """
+    Función de CREACIÓN de movie_id y movie_name
+    """
+    movieId = createMovieId(movies_ids)
+    movieName = createMovieName(movies_name)
 
-def create_movie_id(movies_ids):
-    new_id = int(input("Ingresá el ID de la película (1000 a 9999): "))
-    while new_id < 1000 or new_id > 9999 or search(movies_ids, new_id) != NOT_FOUND:
-        if search(movies_ids, new_id) != NOT_FOUND:
-            print("Ese ID ya existe.")
-        else:
-            print("El ID debe estar entre 1000 y 9999.")
-        new_id = int(input("Ingresá el ID de la película (1000 a 9999): "))
-    return new_id
+    movies_ids.append(movieId)
+    movies_name.append(movieName)
+    ## Parte final de la creación, reservamos el espacio, por ahora en blanco, para luego reemplazar el lugar con el dato final sobre esa pelicula, manteniendo las listas paralelas alineadas
+    idx_genres.append(NOT_FOUND)
+    idx_years.append(NOT_FOUND)
+    movies_rates.append(NOT_FOUND)
 
+    print("¡Pelicula creada exitosamente!")
+    return
 
-def create_movie_name(movies_names):
-    new_name = input("Ingresá el nombre de la película: ").strip().lower()
-    while new_name == "" or search(movies_names, new_name) != NOT_FOUND:
-        if search(movies_names, new_name) != NOT_FOUND:
-            print("Esa película ya existe.")
-        else:
-            print("El nombre no puede estar vacío.")
-        new_name = input("Ingresá el nombre de la película: ").strip().lower()
-    return new_name
-
+def createMovieId(movies_ids):
+    """
+    Id de la pelicula, debe ser un número entre 1000 y 9999, además no debe de existir en el array de id's
+    """
+    newId = int(input("Ingresá el ID de la pelicula: "))
 
     while (newId < 1000 or newId > 9999) or search(movies_ids, newId) != NOT_FOUND:
         if search(movies_ids, newId) != NOT_FOUND:
@@ -38,9 +43,11 @@ def create_movie_name(movies_names):
         print("")
         newId = int(input("Ingresá el ID de la pelicula: "))
 
-    genres.append(new_genre)
-    print("Género agregado correctamente.")
+    return newId
 
+def createMovieName(movies_name):
+    """Nombre de la pelicula ingresado para el usuario, la pelicula no puede existir o estar vacia"""
+    newName = str(input("Ingresá el nombre de la pelicula: "))
 
     while newName == "" or search(movies_name, newName) != NOT_FOUND:
         if search(movies_name, newName) != NOT_FOUND:
@@ -63,9 +70,11 @@ def createGenre(genres):
         print("")
         newGenre = str(input("Ingresá el genéro de la pelicula: "))
 
-    years.append(new_year)
-    print("Año agregado correctamente.")
+    genres.append(newGenre)
+    print("¡Genéro agregado correctamente!")
 
+def createYear(years):
+    newYear = int(input("Ingresá el año de la pelicula: "))
 
     while (newYear < 1895 or newYear > 2026) or search(years, newYear) != NOT_FOUND:
         if search(years, newYear) != NOT_FOUND:
@@ -75,9 +84,8 @@ def createGenre(genres):
         print("")
         newYear = int(input("Ingresá el año de la pelicula: "))
 
-def new_movie(movies_ids, movies_names, idx_genres, idx_years, movies_rates):
-    movie_id = create_movie_id(movies_ids)
-    movie_name = create_movie_name(movies_names)
+    years.append(newYear)
+    print("¡Año agregado correctamente!")
 
 def loadMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
     """
@@ -90,16 +98,13 @@ def loadMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genr
     
     movie_name = getMovieName(movies_name, temp_movie_idx)
 
-def load_movie(movies_ids, movies_names, idx_genres, idx_years, movies_rates, genres, years):
-    movie_index = get_movie_index(movies_ids)
+    temp_year_idx = getMovieYear(years)
 
-    if movie_index == NOT_FOUND:
+    if temp_year_idx == "":
         return
 
-    print("Película seleccionada:", movies_names[movie_index])
-
-    genre_index = get_genre_index(genres)
-    if genre_index == NOT_FOUND:
+    temp_genre_idx = getMovieGenre(genres)
+    if temp_genre_idx == "":
         return
 
     temp_movie_rate = getMovieRate()
@@ -133,56 +138,38 @@ def getMovieName( movies_name, movie_idx):
 
     return movies_name[movie_idx]
 
-    print("Datos cargados correctamente.")
+def getMovieYear(years):
+    year = int(input("Ingresá el año de la pelicula: "))
+    yearIdx = search(years, year)
+    result = ""
 
+    if yearIdx == NOT_FOUND:
+        printError(year)
+    else:
+        result = yearIdx
 
-def update_movie(movies_ids, movies_names, idx_genres, idx_years, movies_rates, genres, years):
-    movie_index = get_movie_index(movies_ids)
+    return result
 
-    if movie_index == NOT_FOUND:
-        return
+def getMovieGenre(genres):
+    movieGenre = input("Ingresá el género de la pelicula: ")
+    genreIdx = search(genres, movieGenre)
+    result = ""
 
-    print("Película seleccionada:", movies_names[movie_index])
-    print("1. Actualizar género")
-    print("2. Actualizar año")
-    print("3. Actualizar puntuación")
-    print("4. Actualizar todo")
-    print("0. Cancelar")
+    if genreIdx == NOT_FOUND:
+        printError(movieGenre)
+    else:
+        result = genreIdx
+    return result
 
-    option = int(input("Elegí una opción: "))
+def getMovieRate():
+    movieRate = float(input("Ingresá la puntuación entre 1 y 5: "))
 
-    if option == 1:
-        genre_index = get_genre_index(genres)
-        if genre_index != NOT_FOUND:
-            idx_genres[movie_index] = genre_index
-            print("Género actualizado.")
+    while movieRate < 1 or movieRate > 5:
+        print("la puntuación ingresada no es valida, debe ser entre 1 a 5")
+        print("")
+        movieRate = float(input("Ingresá la puntuación entre 1 y 5: "))
 
-    elif option == 2:
-        year_index = get_year_index(years)
-        if year_index != NOT_FOUND:
-            idx_years[movie_index] = year_index
-            print("Año actualizado.")
-
-    elif option == 3:
-        movies_rates[movie_index] = get_movie_rate()
-        print("Puntuación actualizada.")
-
-    elif option == 4:
-        genre_index = get_genre_index(genres)
-        if genre_index == NOT_FOUND:
-            return
-
-        year_index = get_year_index(years)
-        if year_index == NOT_FOUND:
-            return
-
-        movie_rate = get_movie_rate()
-
-        idx_genres[movie_index] = genre_index
-        idx_years[movie_index] = year_index
-        movies_rates[movie_index] = movie_rate
-
-        print("Película actualizada completamente.")
+    return movieRate
 
 def showMovies(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
     """Funcion para mostrar el listado de peliculas"""
@@ -223,8 +210,7 @@ def showGenres(genres):
 
     print("Genéros totales:", len(genres))   
     for i in range(len(genres)):
-        print(i, "-", genres[i])
-
+        print("Genéro: ", genres[i])
 
 def showYears(years):
     if not len(years):
@@ -232,25 +218,7 @@ def showYears(years):
 
     print("Años totales cargados:", len(years)) 
     for i in range(len(years)):
-        print(i, "-", years[i])
-
-
-def count_movies_by_genre(idx_genres, genres):
-    if len(genres) == 0:
-        print("No hay géneros cargados.")
-        return
-
-    if len(idx_genres) == 0:
-        print("No hay películas creadas.")
-        return
-
-    print("\n--- CANTIDAD DE PELÍCULAS POR GÉNERO ---")
-    for i in range(len(genres)):
-        counter = 0
-        for j in range(len(idx_genres)):
-            if idx_genres[j] == i:
-                counter += 1
-        print(genres[i], ":", counter)
+        print("Año: ", years[i])
 
 def count_movies_by_genre(idx_genres, genres):
     if len(genres) == 0:
@@ -272,14 +240,14 @@ def count_movies_by_genre(idx_genres, genres):
 
 
 def main():
+    movies_name = []
     movies_ids = []
-    movies_names = []
+
+    idx_years = []
+    years = []
 
     idx_genres = []
-    idx_years = []
-
     genres = []
-    years = []
 
     movies_rates = []
 
@@ -327,9 +295,7 @@ def main():
             count_movies_by_genre(idx_genres, genres)
         elif optionSelected == 0:
             print("Saliendo...")
-
         else:
-            print("Opción inválida.")
-
+            print("Opcion inválida.")
 
 main()
