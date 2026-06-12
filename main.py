@@ -130,7 +130,7 @@ def getMovieId(movies_ids):
         result = idExists
     return result
 
-def getMovieName( movies_name, movie_idx):
+def getMovieName(movies_name, movie_idx):
     """
     Devuelve el nombre de la pelicula con el id recibido por argumento, si no existe el id, el programa falla antes
     """
@@ -257,6 +257,76 @@ def calculateAverageReview(reviews):
     
     print("La puntuación promedio es: ", total / withReview)
 
+def sortByName(movies_ids, movies_name, idx_genres, idx_years, movies_rates):
+    """Ordena todas las listas paralelas alfabéticamente por nombre de película (bubble sort)"""
+    if not len(movies_name):
+        print("No hay películas para ordenar.")
+        return
+
+    n = len(movies_name)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if movies_name[j] > movies_name[j + 1]:
+                # Se intercambian todas las listas a la vez para mantener el paralelismo
+                movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
+                movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
+                idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
+                idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
+                movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
+
+    print("¡Películas ordenadas por nombre correctamente!")
+
+
+def sortByYear(movies_ids, movies_name, idx_genres, idx_years, movies_rates, years):
+    """Ordena todas las listas paralelas por año de la película de menor a mayor (bubble sort).
+    Si alguna película no tiene año cargado (NOT_FOUND), se saltea el swap y se la deja donde está."""
+    if not len(movies_name):
+        print("No hay películas para ordenar.")
+        return
+
+    n = len(idx_years)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            # Si alguna de las dos no tiene año cargado, no se comparan
+            if idx_years[j] == NOT_FOUND or idx_years[j + 1] == NOT_FOUND:
+                continue
+
+            if years[idx_years[j]] > years[idx_years[j + 1]]:
+                # Se intercambian todas las listas a la vez para mantener el paralelismo
+                movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
+                movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
+                idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
+                idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
+                movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
+
+    print("¡Películas ordenadas por año correctamente!")
+
+
+def sortByRate(movies_ids, movies_name, idx_genres, idx_years, movies_rates):
+    """Ordena todas las listas paralelas por puntuación de mayor a menor (bubble sort).
+    Si alguna película no tiene puntuación cargada (NOT_FOUND), se saltea el swap y se la deja donde está."""
+    if not len(movies_name):
+        print("No hay películas para ordenar.")
+        return
+
+    n = len(movies_rates)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            # Si alguna de las dos no tiene puntuación cargada, no se comparan
+            if movies_rates[j] == NOT_FOUND or movies_rates[j + 1] == NOT_FOUND:
+                continue
+
+            if movies_rates[j] < movies_rates[j + 1]:
+                # Se intercambian todas las listas a la vez para mantener el paralelismo
+                movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
+                movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
+                idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
+                idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
+                movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
+
+    print("¡Películas ordenadas por puntuación correctamente!")
+
+
 def main():
     movies_name = []
     movies_ids = []
@@ -310,6 +380,12 @@ def main():
             createYear(years)
         elif optionSelected == 7:
             showYears(years)
+        elif optionSelected == 8:
+            sortByName(movies_ids, movies_name, idx_genres, idx_years, movies_rates)
+        elif optionSelected == 9:
+            sortByYear(movies_ids, movies_name, idx_genres, idx_years, movies_rates, years)
+        elif optionSelected == 10:
+            sortByRate(movies_ids, movies_name, idx_genres, idx_years, movies_rates)
         elif optionSelected == 11:
             countMoviesByGenre(idx_genres, genres)
         elif optionSelected == 12:
