@@ -1,4 +1,4 @@
-NOT_FOUND = -1
+NOT_FOUND = -1  #esto es importante porque como primero se crea una peli y despues le cargas los datos, los campos de genero, ano y puntuacion quedan vacios temporalmente, para representar ese vacio usamos esto que es un nvalor que no aparece naturalmente
 
 def printError(value):
     """Acepta un valor como argumento y lo usa para imprimir un mensaje de error genérico"""
@@ -6,7 +6,7 @@ def printError(value):
     print("")
 
 
-def search(array, value):
+def search(array, value): #busca un valor en la lista y devuelve el indice donde lo encontro, sino existe te devuelve el NOT FOUND
     for i in range(len(array)):
         if array[i] == value:
             return i
@@ -16,7 +16,7 @@ def newMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates):
     """
     Función de CREACIÓN de movie_id y movie_name
     """
-    movieId = createMovieId(movies_ids)
+    movieId = createMovieId(movies_ids) 
     movieName = createMovieName(movies_name)
 
     movies_ids.append(movieId)
@@ -59,7 +59,7 @@ def createMovieName(movies_name):
         newName = str(input("Ingresá el nombre de la pelicula: "))
     return newName
 
-def createGenre(genres):
+def createGenre(genres): #pide un genero nuevo, valida que no este vacio y que no exista ya y lo agrega a la lista de generos
     newGenre = str(input("Ingresá el genéro de la pelicula: "))
 
     while newGenre == "" or search(genres, newGenre) != NOT_FOUND:
@@ -73,7 +73,7 @@ def createGenre(genres):
     genres.append(newGenre)
     print("¡Genéro agregado correctamente!")
 
-def createYear(years):
+def createYear(years): #pide a;o nuevo y valida que este entre anos logicos porque sino no tiene sentido
     newYear = int(input("Ingresá el año de la pelicula: "))
 
     while (newYear < 1895 or newYear > 2026) or search(years, newYear) != NOT_FOUND:
@@ -89,7 +89,7 @@ def createYear(years):
 
 def loadMovie(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
     """
-    Función de carga de peliculas con los datos existentes
+    Función de carga de peliculas con los datos existentes, esto es importante porque reemplaza lso notfound reservados al crear la pelicual
     """
     temp_movie_idx = getMovieId(movies_ids)
 
@@ -138,7 +138,7 @@ def getMovieName(movies_name, movie_idx):
 
     return movies_name[movie_idx]
 
-def getMovieYear(years):
+def getMovieYear(years): #pide un a;o al usuario, lo busca en la lista y devuelve el indice donde esta sino existe te devuelve comillas y te muestra el error
     year = int(input("Ingresá el año de la pelicula: "))
     yearIdx = search(years, year)
     result = ""
@@ -150,7 +150,7 @@ def getMovieYear(years):
 
     return result
 
-def getMovieGenre(genres):
+def getMovieGenre(genres): #mismo que getmovie year pero para generos
     movieGenre = input("Ingresá el género de la pelicula: ")
     genreIdx = search(genres, movieGenre)
     result = ""
@@ -161,7 +161,7 @@ def getMovieGenre(genres):
         result = genreIdx
     return result
 
-def getMovieRate():
+def getMovieRate(): #es la funcion que hace que el usuario pueda puntear las pelis que vio y cargo
     movieRate = float(input("Ingresá la puntuación entre 1 y 5: "))
 
     while movieRate < 1 or movieRate > 5:
@@ -172,7 +172,7 @@ def getMovieRate():
     return movieRate
 
 def showMovies(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
-    """Funcion para mostrar el listado de peliculas"""
+    """Funcion para mostrar el listado de peliculas con todos sus datos"""
     if not len(movies_ids):
         print("")
         print("No hay peliculas cargadas")
@@ -204,7 +204,7 @@ def showMovies(movies_ids, movies_name, idx_genres, idx_years, movies_rates, gen
             print("")
         print("Todas las peliculas fueron listadas")
 
-def showGenres(genres):
+def showGenres(genres): #muestra todos los generos cargados en el sistema y la cantidad total
     if not len(genres):
         print("No hay generos para listar")
         return
@@ -213,7 +213,7 @@ def showGenres(genres):
     for i in range(len(genres)):
         print("Genéro: ", genres[i])
 
-def showYears(years):
+def showYears(years): #mismo que generos pero anos
     if not len(years):
         print("No hay años para listar")
         return
@@ -222,7 +222,7 @@ def showYears(years):
     for i in range(len(years)):
         print("Año: ", years[i])
 
-def countMoviesByGenre(idx_genres, genres):
+def countMoviesByGenre(idx_genres, genres): #muestra la cantidad de peliculas cargadas por genero
     if len(genres) == 0:
         print("No hay géneros cargados.")
         return
@@ -239,7 +239,7 @@ def countMoviesByGenre(idx_genres, genres):
                 counter += 1
         print(genres[i], ":", counter)
 
-def calculateAverageReview(reviews):
+def calculateAverageReview(reviews): #calcula y muestra el promedio general de la puntuacion, ignorando las pelis isn puntuacino previa
     if not len(reviews):
         print("No hay puntuaciones cargadas")
         return
@@ -287,17 +287,15 @@ def sortByYear(movies_ids, movies_name, idx_genres, idx_years, movies_rates, yea
     n = len(idx_years)
     for i in range(n - 1):
         for j in range(n - 1 - i):
-            # Si alguna de las dos no tiene año cargado, no se comparan
-            if idx_years[j] == NOT_FOUND or idx_years[j + 1] == NOT_FOUND:
-                continue
-
-            if years[idx_years[j]] > years[idx_years[j + 1]]:
-                # Se intercambian todas las listas a la vez para mantener el paralelismo
-                movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
-                movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
-                idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
-                idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
-                movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
+            # Solo se comparan si ambas películas tienen año cargado
+            if idx_years[j] != NOT_FOUND and idx_years[j + 1] != NOT_FOUND:
+                if years[idx_years[j]] > years[idx_years[j + 1]]:
+                    # Se intercambian todas las listas a la vez para mantener el paralelismo
+                    movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
+                    movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
+                    idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
+                    idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
+                    movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
 
     print("¡Películas ordenadas por año correctamente!")
 
@@ -312,19 +310,228 @@ def sortByRate(movies_ids, movies_name, idx_genres, idx_years, movies_rates):
     n = len(movies_rates)
     for i in range(n - 1):
         for j in range(n - 1 - i):
-            # Si alguna de las dos no tiene puntuación cargada, no se comparan
-            if movies_rates[j] == NOT_FOUND or movies_rates[j + 1] == NOT_FOUND:
-                continue
-
-            if movies_rates[j] < movies_rates[j + 1]:
-                # Se intercambian todas las listas a la vez para mantener el paralelismo
-                movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
-                movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
-                idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
-                idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
-                movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
+            # Solo se comparan si ambas películas tienen puntuación cargada
+            if movies_rates[j] != NOT_FOUND and movies_rates[j + 1] != NOT_FOUND:
+                if movies_rates[j] < movies_rates[j + 1]:
+                    # Se intercambian todas las listas a la vez para mantener el paralelismo
+                    movies_name[j], movies_name[j + 1] = movies_name[j + 1], movies_name[j]
+                    movies_ids[j], movies_ids[j + 1] = movies_ids[j + 1], movies_ids[j]
+                    idx_genres[j], idx_genres[j + 1] = idx_genres[j + 1], idx_genres[j]
+                    idx_years[j], idx_years[j + 1] = idx_years[j + 1], idx_years[j]
+                    movies_rates[j], movies_rates[j + 1] = movies_rates[j + 1], movies_rates[j]
 
     print("¡Películas ordenadas por puntuación correctamente!")
+
+
+def searchMovieByName(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
+    """Busca una película por nombre y muestra todos sus datos. Resuelve los índices de género y año para mostrar los valores reales."""
+    if not len(movies_name):
+        print("No hay películas cargadas.")
+        return
+
+    nameToSearch = input("Ingresá el nombre de la pelicula a buscar: ")
+    idx = search(movies_name, nameToSearch)
+
+    if idx == NOT_FOUND:
+        printError(nameToSearch)
+        return
+
+    print("")
+    print("ID: ", movies_ids[idx])
+    print("Nombre: ", movies_name[idx])
+
+    if idx_genres[idx] == NOT_FOUND:
+        print("Genéro: Sin cargar")
+    else:
+        print("Genéro: ", genres[idx_genres[idx]])
+
+    if idx_years[idx] == NOT_FOUND:
+        print("Año: Sin cargar")
+    else:
+        print("Año: ", years[idx_years[idx]])
+
+    if movies_rates[idx] == NOT_FOUND:
+        print("Puntuacion: Sin cargar")
+    else:
+        print("Puntuacion: ", movies_rates[idx])
+
+
+def searchMovieById(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years):
+    """Busca una película por ID y muestra todos sus datos. Resuelve los índices de género y año para mostrar los valores reales."""
+    if not len(movies_ids):
+        print("No hay películas cargadas.")
+        return
+
+    idToSearch = int(input("Ingresá el ID de la pelicula a buscar: "))
+    idx = search(movies_ids, idToSearch)
+
+    if idx == NOT_FOUND:
+        printError(idToSearch)
+        return
+
+    print("")
+    print("ID: ", movies_ids[idx])
+    print("Nombre: ", movies_name[idx])
+
+    if idx_genres[idx] == NOT_FOUND:
+        print("Genéro: Sin cargar")
+    else:
+        print("Genéro: ", genres[idx_genres[idx]])
+
+    if idx_years[idx] == NOT_FOUND:
+        print("Año: Sin cargar")
+    else:
+        print("Año: ", years[idx_years[idx]])
+
+    if movies_rates[idx] == NOT_FOUND:
+        print("Puntuacion: Sin cargar")
+    else:
+        print("Puntuacion: ", movies_rates[idx])
+
+
+def oldestMovie(movies_name, idx_years, years):
+    """Recorre las películas y encuentra la más vieja comparando años. Ignora las que no tienen año cargado."""
+    if not len(movies_name):
+        print("No hay películas cargadas.")
+        return
+
+    oldestIdx = NOT_FOUND
+    for i in range(len(idx_years)):
+        if idx_years[i] == NOT_FOUND:
+            pass
+        elif oldestIdx == NOT_FOUND or years[idx_years[i]] < years[idx_years[oldestIdx]]:
+            oldestIdx = i
+
+    if oldestIdx == NOT_FOUND:
+        print("No hay películas con año cargado.")
+        return
+
+    print("La película más vieja es:", movies_name[oldestIdx], "(", years[idx_years[oldestIdx]], ")")
+
+
+def newestMovie(movies_name, idx_years, years):
+    """Recorre las películas y encuentra la más nueva comparando años. Ignora las que no tienen año cargado."""
+    if not len(movies_name):
+        print("No hay películas cargadas.")
+        return
+
+    newestIdx = NOT_FOUND
+    for i in range(len(idx_years)):
+        if idx_years[i] == NOT_FOUND:
+            pass
+        elif newestIdx == NOT_FOUND or years[idx_years[i]] > years[idx_years[newestIdx]]:
+            newestIdx = i
+
+    if newestIdx == NOT_FOUND:
+        print("No hay películas con año cargado.")
+        return
+
+    print("La película más nueva es:", movies_name[newestIdx], "(", years[idx_years[newestIdx]], ")")
+
+
+def averageRateByGenre(idx_genres, movies_rates, genres):
+    """Calcula y muestra el promedio de puntuación para cada género, ignorando las películas sin puntuación cargada."""
+    if len(genres) == 0:
+        print("No hay géneros cargados.")
+        return
+
+    if len(idx_genres) == 0:
+        print("No hay películas creadas.")
+        return
+
+    print("\n--- PROMEDIO DE PUNTUACIÓN POR GÉNERO ---")
+    for i in range(len(genres)):
+        total = 0
+        counter = 0
+        for j in range(len(idx_genres)):
+            if idx_genres[j] == i and movies_rates[j] != NOT_FOUND:
+                total += movies_rates[j]
+                counter += 1
+
+        if counter == 0:
+            print(genres[i], ": Sin puntuaciones cargadas")
+        else:
+            print(genres[i], ":", total / counter)
+
+
+def bestRatedGenre(idx_genres, movies_rates, genres):
+    """Encuentra y muestra el género con mejor promedio de puntuación entre todos los géneros con películas puntuadas."""
+    if len(genres) == 0:
+        print("No hay géneros cargados.")
+        return
+
+    if len(idx_genres) == 0:
+        print("No hay películas creadas.")
+        return
+
+    bestGenreIdx = NOT_FOUND
+    bestAverage = NOT_FOUND
+
+    for i in range(len(genres)):
+        total = 0
+        counter = 0
+        for j in range(len(idx_genres)):
+            if idx_genres[j] == i and movies_rates[j] != NOT_FOUND:
+                total += movies_rates[j]
+                counter += 1
+
+        if counter == 0:
+            pass
+        else:
+            average = total / counter
+            if bestGenreIdx == NOT_FOUND or average > bestAverage:
+                bestGenreIdx = i
+                bestAverage = average
+
+    if bestGenreIdx == NOT_FOUND:
+        print("No hay géneros con puntuaciones cargadas.")
+        return
+
+    print("El género con mejor puntuación es:", genres[bestGenreIdx], "con un promedio de", bestAverage)
+
+
+def mostLoadedGenre(idx_genres, genres):
+    """Encuentra y muestra el género que tiene más películas cargadas."""
+    if len(genres) == 0:
+        print("No hay géneros cargados.")
+        return
+
+    mostIdx = NOT_FOUND
+    mostCount = NOT_FOUND
+
+    for i in range(len(genres)):
+        counter = 0
+        for j in range(len(idx_genres)):
+            if idx_genres[j] == i:
+                counter += 1
+
+        if mostIdx == NOT_FOUND or counter > mostCount:
+            mostIdx = i
+            mostCount = counter
+
+    print("El género más cargado es:", genres[mostIdx], "con", mostCount, "películas")
+
+
+def leastLoadedGenre(idx_genres, genres):
+    """Encuentra y muestra el género que tiene menos películas cargadas."""
+    if len(genres) == 0:
+        print("No hay géneros cargados.")
+        return
+
+    leastIdx = NOT_FOUND
+    leastCount = NOT_FOUND
+
+    for i in range(len(genres)):
+        counter = 0
+        for j in range(len(idx_genres)):
+            if idx_genres[j] == i:
+                counter += 1
+
+        if leastIdx == NOT_FOUND or counter < leastCount:
+            leastIdx = i
+            leastCount = counter
+
+    print("El género menos cargado es:", genres[leastIdx], "con", leastCount, "películas")
 
 
 def main():
@@ -361,6 +568,15 @@ def main():
         print("")
         print("11. Mostrar cantidad de peliculas por género")
         print("12. Mostrar promedio de puntuación")
+        print("")
+        print("13. Buscar pelicula por nombre")
+        print("14. Buscar pelicula por ID")
+        print("15. Mostrar pelicula más vieja")
+        print("16. Mostrar pelicula más nueva")
+        print("17. Mostrar promedio de puntuación por género")
+        print("18. Mostrar género con mejor puntuación")
+        print("19. Mostrar género más cargado")
+        print("20. Mostrar género menos cargado")
         print("0. Finalizar programa")
         print("")
 
@@ -390,6 +606,22 @@ def main():
             countMoviesByGenre(idx_genres, genres)
         elif optionSelected == 12:
             calculateAverageReview(movies_rates)
+        elif optionSelected == 13:
+            searchMovieByName(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years)
+        elif optionSelected == 14:
+            searchMovieById(movies_ids, movies_name, idx_genres, idx_years, movies_rates, genres, years)
+        elif optionSelected == 15:
+            oldestMovie(movies_name, idx_years, years)
+        elif optionSelected == 16:
+            newestMovie(movies_name, idx_years, years)
+        elif optionSelected == 17:
+            averageRateByGenre(idx_genres, movies_rates, genres)
+        elif optionSelected == 18:
+            bestRatedGenre(idx_genres, movies_rates, genres)
+        elif optionSelected == 19:
+            mostLoadedGenre(idx_genres, genres)
+        elif optionSelected == 20:
+            leastLoadedGenre(idx_genres, genres)
         elif optionSelected == 0:
             print("Saliendo...")
         else:
