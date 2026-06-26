@@ -1,0 +1,421 @@
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el genéro de la pelicula: ¡Genéro agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el genéro de la pelicula: ¡Genéro agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el genéro de la pelicula: ¡Genéro agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el año de la pelicula: ¡Año agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el año de la pelicula: ¡Año agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el año de la pelicula: ¡Año agregado correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el ID de la pelicula: Ingresá el nombre de la pelicula: ¡Pelicula creada exitosamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el ID de la pelicula: Ingresá el nombre de la pelicula: ¡Pelicula creada exitosamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá el ID de la pelicula: Ingresá el nombre de la pelicula: ¡Pelicula creada exitosamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá un ID para la pelicula: El nombre de la pelicula es: Zorro
+Ingresá el año de la pelicula: Ingresá el género de la pelicula: Ingresá la puntuación entre 1 y 5: ¡Los datos de la pelicula  Zorro fueron cargados correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá un ID para la pelicula: El nombre de la pelicula es: Avengers
+Ingresá el año de la pelicula: Ingresá el género de la pelicula: Ingresá la puntuación entre 1 y 5: ¡Los datos de la pelicula  Avengers fueron cargados correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Ingresá un ID para la pelicula: El nombre de la pelicula es: Batman
+Ingresá el año de la pelicula: Ingresá el género de la pelicula: Ingresá la puntuación entre 1 y 5: ¡Los datos de la pelicula  Batman fueron cargados correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Pelicula nr°:  1
+
+ID:  1003
+Nombre : Zorro
+Genéro:  Accion
+Año:  2010
+Puntuacion:  3.5
+
+Pelicula nr°:  2
+
+ID:  1001
+Nombre : Avengers
+Genéro:  Drama
+Año:  1999
+Puntuacion:  4.8
+
+Pelicula nr°:  3
+
+ID:  1002
+Nombre : Batman
+Genéro:  Comedia
+Año:  2020
+Puntuacion:  2.1
+
+Todas las peliculas fueron listadas
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: ¡Películas ordenadas por nombre correctamente!
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: 3
+
+Pelicula nr°:  1
+
+ID:  1001
+Nombre : Avengers
+Genéro:  Drama
+Año:  1999
+Puntuacion:  4.8
+
+Pelicula nr°:  2
+
+ID:  1002
+Nombre : Batman
+Genéro:  Comedia
+Año:  2020
+Puntuacion:  2.1
+
+Pelicula nr°:  3
+
+ID:  1003
+Nombre : Zorro
+Genéro:  Accion
+Año:  2010
+Puntuacion:  3.5
+
+Todas las peliculas fueron listadas
+
+#--------- BIENVENIDO AL SISTEMA DE GESTIÓN DE PELICULAS ---------#
+#----------------------- MENU DE OPCIONES -----------------------#
+
+1. Crear pelicula
+2. Cargar datos de la pelicula
+3. Listar peliculas
+
+4. Crear genéro
+5. Listar genéros
+
+6. Crear Año
+7. Listar años
+
+8. Ordenar por nombre de pelicula
+9. Ordenar por año de la pelicula
+10. Ordenar por puntuacion
+
+11. Mostrar cantidad de peliculas por género
+12. Mostrar promedio de puntuación
+0. Finalizar programa
+
+Seleccioná una opción para continuar: Saliendo...
